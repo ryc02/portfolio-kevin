@@ -1,0 +1,65 @@
+/* src/components/Projects.css */
+
+.slide-floor-plan {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+
+.slide-floor-plan.normal {
+  grid-template-columns: 1.8fr 1fr;
+}
+
+.slide-floor-plan.reversed {
+  grid-template-columns: 1fr 1.8fr;
+}
+
+.slide-boards {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.slide-technical {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.slide-multi-col {
+  display: grid;
+  align-items: center;
+}
+
+.slide-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  height: 80vh;
+}
+
+@media (max-width: 900px) {
+  .slide-floor-plan,
+  .slide-floor-plan.normal,
+  .slide-floor-plan.reversed,
+  .slide-boards,
+  .slide-technical {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+  
+  .slide-multi-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .slide-image-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+
+  .slide-technical-right-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

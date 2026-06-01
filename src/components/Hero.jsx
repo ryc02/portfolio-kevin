@@ -12,7 +12,7 @@ const Hero = () => {
         </div>
         <div className="fade-in" style={{ animationDelay: '0.3s' }}>
           <img 
-            src="/assets/image1.png" 
+            src="/assets/image1.webp" 
             alt="Kevin Nery" 
             style={{ 
               width: '100%', 

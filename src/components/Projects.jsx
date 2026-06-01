@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import './Projects.css';
 
 const projectsData = [
   {
@@ -11,13 +12,13 @@ const projectsData = [
     slides: [
       {
         type: "intro-mosaic",
-        images: ["/assets/image27.png", "/assets/image29.png", "/assets/image28.png"],
+        images: ["/assets/image27.webp", "/assets/image29.webp", "/assets/image28.webp"],
         gridCols: "2.66fr 1fr",
         gridRows: "1fr 1fr"
       },
       {
         type: "image-grid",
-        images: ["/assets/image31.png", "/assets/image32.png", "/assets/image33.png", "/assets/image30.png"]
+        images: ["/assets/image31.webp", "/assets/image32.webp", "/assets/image33.webp", "/assets/image30.webp"]
       }
     ]
   },
@@ -29,17 +30,17 @@ const projectsData = [
     slides: [
       {
         type: "floor-plan",
-        image: "/assets/image35.png",
+        image: "/assets/image35.webp",
         theme: "dark"
       },
       {
         type: "single-image",
-        image: "/assets/renders_sem_fundo.png",
+        image: "/assets/renders_sem_fundo.webp",
         theme: "dark"
       },
       {
         type: "single-image",
-        image: "/assets/bahira_slide3.png",
+        image: "/assets/bahira_slide3.webp",
         theme: "dark"
       }
     ]
@@ -52,21 +53,21 @@ const projectsData = [
     slides: [
       {
         type: "floor-plan",
-        image: "/assets/ambev_capa_plantas.png",
+        image: "/assets/ambev_capa_plantas.webp",
         theme: "light",
         reverse: true,
         scale: 1
       },
       {
         type: "stacked-panoramas",
-        image1: "/assets/Imagem6.png",
-        image2: "/assets/Imagem8.png",
+        image1: "/assets/Imagem6.webp",
+        image2: "/assets/Imagem8.webp",
         theme: "light"
       },
       {
         type: "stacked-panoramas",
-        image1: "/assets/Imagem9.png",
-        image2: "/assets/Imagem10.png",
+        image1: "/assets/Imagem9.webp",
+        image2: "/assets/Imagem10.webp",
         theme: "light"
       }
     ]
@@ -79,11 +80,11 @@ const projectsData = [
     slides: [
       {
         type: "boards",
-        images: ["/assets/Imagem11.png", "/assets/Imagem12.png"]
+        images: ["/assets/Imagem11.webp", "/assets/Imagem12.webp"]
       },
       {
         type: "image-row",
-        images: ["/assets/Imagem13.png", "/assets/Imagem14.png", "/assets/Imagem15.png"],
+        images: ["/assets/Imagem13.webp", "/assets/Imagem14.webp", "/assets/Imagem15.webp"],
         theme: "light"
       }
     ]
@@ -99,8 +100,8 @@ const projectsData = [
         gridCols: "1.2fr 1.4fr 1.6fr",
         showIntro: true,
         columns: [
-          ["/assets/Imagem16.png", "/assets/Imagem17.png"],
-          ["/assets/Imagem18.png", "/assets/Imagem19.png", "/assets/Imagem20.png"]
+          ["/assets/Imagem16.webp", "/assets/Imagem17.webp"],
+          ["/assets/Imagem18.webp", "/assets/Imagem19.webp", "/assets/Imagem20.webp"]
         ],
         theme: "light",
         gap: "1rem"
@@ -206,7 +207,7 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
             const scaleValue = slide.scale !== undefined ? slide.scale : 1.15;
             return (
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '6rem 0', backgroundColor: slide.theme === 'dark' ? 'var(--text-primary)' : 'var(--bg-color)' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: isReversed ? '1fr 1.8fr' : '1.8fr 1fr', gap: '4rem', alignItems: 'center' }}>
+                <div className={`container slide-floor-plan ${isReversed ? 'reversed' : 'normal'}`}>
                   {isReversed && renderIntroText(slide.theme === 'dark')}
                   <motion.div initial={{ opacity: 0, x: isReversed ? 50 : -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <img src={slide.image} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.image)} style={{ width: '100%', height: 'auto', transform: `scale(${scaleValue})`, transformOrigin: isReversed ? 'center left' : 'center right' }} />
@@ -240,7 +241,7 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
           if (slide.type === 'technical-grid') {
             return (
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '6rem 0', backgroundColor: 'var(--text-primary)' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr', gap: '2rem', alignItems: 'center' }}>
+                <div className="container slide-technical">
                   <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <img src={slide.imageLeft} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.imageLeft)} style={{ width: '100%', height: 'auto', transform: 'scale(1.15)', transformOrigin: 'center left' }} />
                   </motion.div>
@@ -283,7 +284,7 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
             return (
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '6rem 0', backgroundColor: 'var(--bg-color)' }}>
                 <div className="container" style={{ position: 'relative' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', height: '80vh' }}>
+                  <div className="slide-image-grid">
                     {slide.images.slice(0, 4).map((img, i) => (
                       <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.8 }} style={{ overflow: 'hidden', border: '1px solid var(--text-primary)' }}>
                         <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -313,7 +314,7 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
           if (slide.type === 'multi-column') {
             return (
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '6rem 0', backgroundColor: slide.theme === 'light' ? 'var(--bg-color)' : 'var(--text-primary)' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: slide.gridCols || `repeat(${slide.columns.length}, 1fr)`, gap: slide.gap || '2rem', alignItems: 'center' }}>
+                <div className="container slide-multi-col" style={{ gridTemplateColumns: slide.gridCols || `repeat(${slide.columns.length}, 1fr)`, gap: slide.gap || '2rem' }}>
                   {slide.showIntro && renderIntroText(slide.theme === 'dark')}
                   
                   {slide.columns.map((col, colIndex) => (
@@ -349,7 +350,7 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
           if (slide.type === 'boards') {
             return (
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '6rem 0', backgroundColor: 'var(--bg-color)' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'center' }}>
+                <div className="container slide-boards">
                   <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                     {slide.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>

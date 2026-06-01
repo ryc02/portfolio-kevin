@@ -4,27 +4,27 @@ const indexData = [
   {
     id: "01",
     title: "VITTA STUDIO",
-    image: "/assets/capa-vitta-studio.jpeg"
+    image: "/assets/capa-vitta-studio.webp"
   },
   {
     id: "02",
     title: "APARTAMENTO BAHIRA",
-    image: "/assets/capa-bahira.png"
+    image: "/assets/capa-bahira.webp"
   },
   {
     id: "03",
     title: "ESCRITÓRIO AMBEV",
-    image: "/assets/capa-ambev.png"
+    image: "/assets/capa-ambev.webp"
   },
   {
     id: "04",
     title: "WOODORA",
-    image: "/assets/capa-woodora.png"
+    image: "/assets/capa-woodora.webp"
   },
   {
     id: "05",
     title: "EDIFÍCIO L.A.N.S",
-    image: "/assets/capa-lans.jpeg"
+    image: "/assets/capa-lans.webp"
   }
 ];
 
