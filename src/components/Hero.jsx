@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = () => {
@@ -127,12 +128,19 @@ const Hero = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           style={{
-            width: '1px',
-            height: '40px',
-            backgroundColor: '#ffffff',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             opacity: 0.7
           }}
-        />
+        >
+          <div style={{
+            width: '1px',
+            height: '30px',
+            backgroundColor: '#ffffff'
+          }} />
+          <ArrowDown size={16} color="#ffffff" strokeWidth={1.5} style={{ marginTop: '-4px' }} />
+        </motion.div>
       </motion.div>
     </section>
   );
