@@ -130,6 +130,11 @@ section {
   gap: 6rem;
 }
 
+.sticky-col {
+  position: sticky;
+  top: 10rem;
+}
+
 .header-nav {
   display: flex;
   gap: 2.5rem;
@@ -145,6 +150,10 @@ section {
   .grid-2, .responsive-about-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+  
+  .sticky-col {
+    position: static;
   }
   
   .header-nav {

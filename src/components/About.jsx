@@ -63,7 +63,7 @@ const About = () => {
       }}>
         
         {/* Left Column (Sticky) */}
-        <div style={{ position: 'sticky', top: '10rem' }}>
+        <div className="sticky-col">
           <motion.div 
             initial={{ opacity: 0, y: 30 }} 
             whileInView={{ opacity: 1, y: 0 }} 
