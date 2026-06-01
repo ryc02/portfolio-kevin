@@ -36,7 +36,7 @@ const projectsData = [
       {
         type: "single-image",
         image: "/assets/renders_sem_fundo.webp",
-        theme: "dark"
+        theme: "light"
       },
       {
         type: "single-image",
