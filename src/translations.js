@@ -60,6 +60,11 @@ export const translations = {
         title: "Woodora",
         subtitle: "Residencial Efêmero",
         description: "Projeto residencial desenvolvido em grupo no 8º semestre, com foco na pesquisa de materiais e sistemas construtivos. O principal desafio foi conceber uma habitação sustentada por uma estrutura integralmente em madeira, aliando alta eficiência técnica, estabilidade e racionalização no uso do material."
+      },
+      "05": {
+        title: "L.A.N.S",
+        subtitle: "Corporativo",
+        description: "Estudo em grupo para um edifício corporativo cuja premissa urbana é a forte relação com o entorno através de uma fachada ativa. O partido arquitetônico foi norteado por um rigoroso estudo de modulação, onde a principal discussão foi compatibilizar a eficiência da malha estrutural com a linguagem estética e volumétrica do edifício."
       }
     },
     footer: {
@@ -132,6 +137,11 @@ export const translations = {
         title: "Woodora",
         subtitle: "Ephemeral Residential",
         description: "Residential project developed in a group in the 8th semester, with a focus on the research of materials and constructive systems. The main challenge was to conceive a dwelling supported by a structure entirely in wood, combining high technical efficiency, stability, and rationalization in the use of the material."
+      },
+      "05": {
+        title: "L.A.N.S",
+        subtitle: "Corporate",
+        description: "Group study for a corporate building whose urban premise is a strong relationship with the surroundings through an active facade. The architectural approach was guided by a rigorous modulation study, where the main discussion was to reconcile the efficiency of the structural grid with the aesthetic and volumetric language of the building."
       }
     },
     footer: {
