@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+  <!-- A slightly glowing or hollow pointer variant -->
+  <circle cx="10" cy="10" r="6" fill="#1f3d39" stroke="#ffffff" stroke-width="1.5"/>
+</svg>

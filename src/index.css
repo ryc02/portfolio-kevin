@@ -20,11 +20,20 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: var(--font-sans);
   background-color: var(--bg-color);
   color: var(--text-primary);
+  overflow-x: hidden;
+  cursor: url('/cursor-arrow.svg') 4 4, auto;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Custom pointer cursor for interactive elements */
+a, button, [style*="cursor: pointer"] {
+  cursor: url('/cursor-pointer.svg') 10 10, pointer !important;
 }
 
 .container {
