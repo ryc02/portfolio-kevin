@@ -146,8 +146,8 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
   );
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', width: '100vw', backgroundColor: 'var(--bg-color)' }}>
-      <motion.div 
+    <div id={`project-${project.id}`} style={{ position: 'relative', overflow: 'hidden', width: '100vw', backgroundColor: 'var(--bg-color)' }}>
+      <motion.div
         initial={false}
         animate={{ x: `-${activeSlide * 100}vw` }}
         transition={{ type: "spring", stiffness: 60, damping: 20, mass: 1 }}

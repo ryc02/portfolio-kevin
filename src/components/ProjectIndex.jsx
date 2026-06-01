@@ -36,7 +36,16 @@ const ProjectIndex = () => {
         <div className="grid-5-cols">
           
           {indexData.map((item) => (
-            <div key={item.id} style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
+            <div 
+              key={item.id} 
+              style={{ display: 'flex', flexDirection: 'column', position: 'relative', cursor: 'pointer', transition: 'transform 0.3s ease' }}
+              onClick={() => {
+                const el = document.getElementById(`project-${item.id}`);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              onMouseOver={e => e.currentTarget.style.transform = 'translateY(-10px)'}
+              onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}
+            >
               
               {/* Image Container with Border */}
               <div style={{
