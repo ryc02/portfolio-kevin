@@ -1,8 +1,10 @@
 import React from 'react';
 import { Mail, Phone, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer id="footer" style={{ 
       backgroundColor: 'var(--text-primary)', 
@@ -26,9 +28,7 @@ const Footer = () => {
             color: 'var(--bg-color)', 
             marginBottom: '1rem',
             lineHeight: 1.1
-          }}>
-            Vamos conversar<br />
-            <span style={{ color: 'var(--accent-color)' }}>sobre seu projeto?</span>
+          }} dangerouslySetInnerHTML={{ __html: t('footer.contact') }}>
           </h2>
           <p style={{ 
             fontFamily: 'var(--font-sans)',
@@ -37,8 +37,7 @@ const Footer = () => {
             maxWidth: '500px',
             margin: '0 auto'
           }}>
-            Buscando elevar o nível visual e técnico dos seus projetos? 
-            Atualmente aberto para novas parcerias estratégicas e oportunidades desafiadoras.
+            {t('footer.copyText')}
           </p>
         </motion.div>
 
@@ -103,7 +102,7 @@ const Footer = () => {
             letterSpacing: '1px',
             textTransform: 'uppercase'
           }}>
-            © 2026 Kevin Nery Rodrigues
+            {t('footer.rights')}
           </p>
           <p style={{ 
             fontFamily: 'var(--font-sans)', 

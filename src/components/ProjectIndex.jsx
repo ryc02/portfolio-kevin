@@ -1,38 +1,69 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const indexData = [
-  {
-    id: "01",
-    title: "VITTA STUDIO",
-    image: "/assets/capa-vitta-studio.webp"
-  },
-  {
-    id: "02",
-    title: "APARTAMENTO BAHIRA",
-    image: "/assets/capa-bahira.webp"
-  },
-  {
-    id: "03",
-    title: "ESCRITÓRIO AMBEV",
-    image: "/assets/capa-ambev.webp"
-  },
-  {
-    id: "04",
-    title: "WOODORA",
-    image: "/assets/capa-woodora.webp"
-  },
-  {
-    id: "05",
-    title: "EDIFÍCIO L.A.N.S",
-    image: "/assets/capa-lans.webp"
-  }
+  { id: "01", title: "VITTA STUDIO", image: "/assets/capa-vitta-studio.webp" },
+  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira.webp" },
+  { id: "03", title: "AMBEV", image: "/assets/capa-ambev.webp" },
+  { id: "04", title: "WOODORA", image: "/assets/capa-woodora.webp" },
+  { id: "05", title: "L.A.N.S", image: "/assets/capa-lans.webp" }
 ];
 
+const ParallaxThumbnail = ({ src, alt }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  // Moves the image slightly up/down as user scrolls past
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+  return (
+    <div ref={ref} style={{
+      width: '100%',
+      height: '400px',
+      overflow: 'hidden',
+      position: 'relative'
+    }}>
+      <motion.img 
+        src={src} 
+        alt={alt}
+        loading="lazy"
+        style={{
+          width: '100%',
+          height: '130%', // extra height to allow scrolling
+          objectFit: 'cover',
+          display: 'block',
+          y,
+          position: 'absolute',
+          top: '-15%'
+        }}
+      />
+    </div>
+  );
+};
+
 const ProjectIndex = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="project-index" style={{ backgroundColor: 'var(--bg-color)', padding: '6rem 0' }}>
       <div className="container" style={{ maxWidth: '1400px', padding: '0 2rem' }}>
         
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.2rem',
+          letterSpacing: '2px',
+          textTransform: 'uppercase',
+          marginBottom: '3rem',
+          textAlign: 'center',
+          color: 'var(--text-secondary)'
+        }}>
+          {t('projectIndex.title')}
+        </h2>
+
         <div className="grid-5-cols">
           
           {indexData.map((item) => (
@@ -50,7 +81,7 @@ const ProjectIndex = () => {
               {/* Image Container with Border */}
               <div style={{
                 border: '2px solid var(--text-primary)',
-                padding: '0.2rem', // Small gap between border and image if desired, or 0
+                padding: '0.2rem',
                 flexGrow: 1,
                 display: 'flex',
                 position: 'relative'
@@ -70,17 +101,7 @@ const ProjectIndex = () => {
                   {item.id}
                 </div>
 
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '400px',
-                    objectFit: 'cover',
-                    display: 'block'
-                  }}
-                />
+                <ParallaxThumbnail src={item.image} alt={item.title} />
               </div>
 
               {/* Title Block below image */}

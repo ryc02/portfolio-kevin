@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const TimelineItem = ({ title, date, subtitle, desc, isLast }) => (
   <div style={{ display: 'flex', gap: '2rem', marginBottom: isLast ? '0' : '3rem', position: 'relative' }}>
@@ -56,6 +57,7 @@ const TimelineItem = ({ title, date, subtitle, desc, isLast }) => (
 );
 
 const About = () => {
+  const { t } = useLanguage();
   return (
     <section id="about" style={{ backgroundColor: '#ffffff', padding: '10rem 0' }}>
       <div className="container responsive-about-grid" style={{ 
@@ -76,8 +78,7 @@ const About = () => {
               color: 'var(--text-primary)',
               lineHeight: 1,
               marginBottom: '2rem'
-            }}>
-              Sobre<br/>Mim
+            }} dangerouslySetInnerHTML={{ __html: t('about.title') }}>
             </h2>
             
             <div style={{ marginBottom: '3rem' }}>
@@ -87,8 +88,7 @@ const About = () => {
               </p>
             </div>
 
-            <p className="text-body" style={{ fontSize: '1.1rem', maxWidth: '450px' }}>
-              Especialista em representação gráfica e visualização arquitetônica 3D. Meu foco é traduzir conceitos complexos em experiências espaciais imersivas e fotorrealistas. Mais do que desenhar projetos, minha missão é elevar a percepção de valor de cada ambiente, unindo <strong>excelência estética</strong> a um <strong>rigor executivo</strong> impecável.
+            <p className="text-body" style={{ fontSize: '1.1rem', maxWidth: '450px' }} dangerouslySetInnerHTML={{ __html: t('about.description2') }}>
             </p>
           </motion.div>
         </div>
@@ -111,32 +111,28 @@ const About = () => {
               marginBottom: '3rem',
               fontWeight: 600
             }}>
-              Trajetória Profissional
+              {t('about.trajectoryTitle')}
             </h3>
             
             <TimelineItem 
-              title="Vista Concept"
-              date="2024 - Atualmente"
-              subtitle="Estagiário de Arquitetura"
-              desc={
-                <>
-                  Atuação no desenvolvimento de projetos de varejo de alto padrão. Responsável por projetos executivos, modelagem 3D e renderizações fotorrealistas para marcas globais de prestígio, incluindo: <strong>Swarovski, Burger King, Espaçolaser e BlueFit</strong>. Foco absoluto na padronização da identidade visual e excelência técnica.
-                </>
-              }
+              title={t('about.timeline.vista.title')}
+              date={t('about.timeline.vista.date')}
+              subtitle={t('about.timeline.vista.subtitle')}
+              desc={<span dangerouslySetInnerHTML={{ __html: t('about.timeline.vista.desc') }} />}
             />
             
             <TimelineItem 
-              title="McDonald's"
-              date="2023"
-              subtitle="Atendente de Restaurante"
-              desc="Realizava funções como limpeza, atendimento ao público, cozinha e preparação de alimentos."
+              title={t('about.timeline.trio.title')}
+              date={t('about.timeline.trio.date')}
+              subtitle={t('about.timeline.trio.subtitle')}
+              desc={t('about.timeline.trio.desc')}
             />
             
             <TimelineItem 
-              title="Hering"
-              date="2023"
-              subtitle="Auxiliar de Loja"
-              desc="Contratado como extra onde realizava funções como estoque, organização de loja e provador."
+              title={t('about.timeline.melo.title')}
+              date={t('about.timeline.melo.date')}
+              subtitle={t('about.timeline.melo.subtitle')}
+              desc={t('about.timeline.melo.desc')}
               isLast={true}
             />
           </div>

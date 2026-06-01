@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section id="hero" style={{ 
       minHeight: '100vh', 
@@ -21,46 +23,32 @@ const Hero = () => {
         flexDirection: 'column',
         alignItems: 'center'
       }}>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h1 className="title-huge" style={{ 
-            marginBottom: '1rem',
-            color: 'var(--text-primary)',
-            textTransform: 'uppercase'
-          }}>
-            Portfólio
-          </h1>
-        </motion.div>
-
+      <div style={{ textAlign: 'center' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
-          <h2 style={{ 
-            fontFamily: 'var(--font-sans)', 
-            fontWeight: 300, 
-            fontSize: 'clamp(1rem, 2vw, 1.5rem)',
-            letterSpacing: '4px',
-            textTransform: 'uppercase',
-            color: 'var(--text-secondary)',
-            marginBottom: '0.5rem'
-          }}>
-            Kevin Nery
-          </h2>
+          <h1 className="hero-title">
+            <span style={{ display: 'block', fontWeight: 300 }}>{t('hero.title')}</span>
+            <span style={{ display: 'block', fontWeight: 600, fontStyle: 'italic' }}>{t('hero.lastName')}</span>
+          </h1>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          style={{ marginTop: '2rem' }}
+        >
           <p style={{ 
             fontFamily: 'var(--font-sans)',
-            fontSize: '0.9rem',
-            letterSpacing: '2px',
+            letterSpacing: '4px',
             textTransform: 'uppercase',
-            color: 'var(--accent-color)',
-            fontWeight: 600
+            fontSize: '0.9rem',
+            color: 'rgba(255, 255, 255, 0.7)'
           }}>
-            Arquitetura & Urbanismo
+            {t('hero.subtitle')}
           </p>
         </motion.div>
       </div>
@@ -82,13 +70,12 @@ const Hero = () => {
         }}
       >
         <span style={{ 
-          fontSize: '0.75rem', 
-          textTransform: 'uppercase', 
+          fontFamily: 'var(--font-sans)', 
+          fontSize: '0.7rem', 
           letterSpacing: '2px',
-          color: 'var(--text-secondary)'
-        }}>
-          Scroll
-        </span>
+          textTransform: 'uppercase',
+          color: 'rgba(255, 255, 255, 0.5)'
+        }}>Scroll</span>
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -100,6 +87,7 @@ const Hero = () => {
           }}
         />
       </motion.div>
+      </div>
     </section>
   );
 };

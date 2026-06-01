@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Header = () => {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t, language, toggleLanguage } = useLanguage();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -74,14 +76,14 @@ const Header = () => {
         </a>
       </div>
 
-      <nav className="header-nav">
+      <nav className="header-nav" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
         {[
-          { name: 'Sobre', id: 'about' },
-          { name: 'Projetos', id: 'project-index' },
-          { name: 'Contato', id: 'footer' }
+          { name: t('nav.about'), id: 'about' },
+          { name: t('nav.projects'), id: 'project-index' },
+          { name: t('nav.contact'), id: 'footer' }
         ].map((item) => (
           <a
-            key={item.name}
+            key={item.id}
             href={`#${item.id}`}
             onClick={(e) => handleNavClick(e, item.id)}
             style={{
@@ -101,6 +103,34 @@ const Header = () => {
             {item.name}
           </a>
         ))}
+        
+        {/* Language Toggle */}
+        <button
+          onClick={toggleLanguage}
+          style={{
+            background: 'none',
+            border: '1px solid rgba(0,0,0,0.1)',
+            padding: '4px 8px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontFamily: 'var(--font-sans)',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            color: 'var(--text-primary)',
+            transition: 'all 0.3s ease',
+            marginLeft: '1rem',
+          }}
+          onMouseOver={(e) => {
+            e.target.style.borderColor = 'var(--accent-color)';
+            e.target.style.color = 'var(--accent-color)';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.borderColor = 'rgba(0,0,0,0.1)';
+            e.target.style.color = 'var(--text-primary)';
+          }}
+        >
+          {language === 'pt' ? 'EN' : 'PT'}
+        </button>
       </nav>
     </motion.header>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Projects.css';
 
 const projectsData = [
@@ -121,6 +122,7 @@ const staggerVariants = {
 const ProjectSlider = ({ project, setLightboxImage }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const totalSlides = project.slides.length;
+  const { t } = useLanguage();
 
   const nextSlide = () => setActiveSlide((p) => (p + 1) % totalSlides);
   const prevSlide = () => setActiveSlide((p) => (p - 1 + totalSlides) % totalSlides);
@@ -131,16 +133,16 @@ const ProjectSlider = ({ project, setLightboxImage }) => {
         {project.id}.
       </motion.h2>
       <motion.h3 custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerVariants} style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: isDark ? 'var(--accent-color)' : 'var(--text-primary)', fontWeight: 400, marginBottom: '0.5rem', textAlign: isDark ? 'right' : 'left' }}>
-        {project.title}
+        {t(`projects.${project.id}.title`)}
       </motion.h3>
       <motion.p custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerVariants} style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', letterSpacing: '3px', color: isDark ? 'var(--bg-color)' : 'var(--accent-light)', textTransform: 'uppercase', fontWeight: 500, textAlign: isDark ? 'right' : 'left' }}>
-        {project.softwares}
+        {project.softwares} {/* Keeping software names untranslated or translated if needed */}
       </motion.p>
       
       <motion.div custom={3} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerVariants} style={{ width: '50px', height: '2px', backgroundColor: 'var(--accent-color)', margin: '2.5rem 0', alignSelf: isDark ? 'flex-end' : 'flex-start' }} />
 
       <motion.p custom={4} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerVariants} style={{ color: isDark ? '#e0e0e0' : 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem', fontWeight: 300, textAlign: isDark ? 'right' : 'left', alignSelf: isDark ? 'flex-end' : 'flex-start' }}>
-        {project.description}
+        {t(`projects.${project.id}.description`)}
       </motion.p>
     </div>
   );
