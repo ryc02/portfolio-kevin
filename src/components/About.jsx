@@ -122,17 +122,17 @@ const About = () => {
             />
             
             <TimelineItem 
-              title={t('about.timeline.trio.title')}
-              date={t('about.timeline.trio.date')}
-              subtitle={t('about.timeline.trio.subtitle')}
-              desc={t('about.timeline.trio.desc')}
+              title={t('about.timeline.hering.title')}
+              date={t('about.timeline.hering.date')}
+              subtitle={t('about.timeline.hering.subtitle')}
+              desc={t('about.timeline.hering.desc')}
             />
             
             <TimelineItem 
-              title={t('about.timeline.melo.title')}
-              date={t('about.timeline.melo.date')}
-              subtitle={t('about.timeline.melo.subtitle')}
-              desc={t('about.timeline.melo.desc')}
+              title={t('about.timeline.mcdonalds.title')}
+              date={t('about.timeline.mcdonalds.date')}
+              subtitle={t('about.timeline.mcdonalds.subtitle')}
+              desc={t('about.timeline.mcdonalds.desc')}
               isLast={true}
             />
           </div>

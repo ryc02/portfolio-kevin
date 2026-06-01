@@ -41,7 +41,7 @@ const projectsData = [
       },
       {
         type: "single-image",
-        image: "/assets/bahira_slide3.png",
+        image: "/assets/bahira_slide3.webp",
         theme: "dark"
       }
     ]

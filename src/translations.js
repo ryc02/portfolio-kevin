@@ -23,17 +23,17 @@ export const translations = {
           subtitle: "Estagiário de Arquitetura",
           desc: "Atuação no desenvolvimento de projetos de varejo de alto padrão. Responsável por projetos executivos, modelagem 3D e renderizações fotorrealistas para marcas globais de prestígio, incluindo: <strong>Swarovski, Burger King, Espaçolaser e BlueFit</strong>. Foco absoluto na padronização da identidade visual e excelência técnica."
         },
-        trio: {
-          title: "Trio Arquitetura",
-          date: "2023 - 2024",
-          subtitle: "Estagiário",
-          desc: "Desenvolvimento de projetos residenciais de alto padrão. Atuação em todo o processo criativo, desde os estudos preliminares até o projeto executivo detalhado. Responsável também pela criação de maquetes eletrônicas e renderizações que materializam o conceito inicial do projeto."
+        hering: {
+          title: "Hering",
+          date: "2023",
+          subtitle: "Auxiliar de Loja",
+          desc: "Contratado como extra para atuação em rotinas de estoque, organização de loja e suporte nos provadores."
         },
-        melo: {
-          title: "Melo Arquitetos",
-          date: "2023 - 2023",
-          subtitle: "Estagiário",
-          desc: "Primeiro contato prático com a dinâmica de um escritório de arquitetura. Atividades focadas na elaboração de desenhos técnicos detalhados e desenvolvimento de maquetes eletrônicas básicas, prestando suporte fundamental ao fluxo de trabalho da equipe de arquitetos."
+        mcdonalds: {
+          title: "McDonald's",
+          date: "2023",
+          subtitle: "Atendente de Restaurante",
+          desc: "Atendimento ao público, preparo de produtos, suporte na cozinha e rotinas gerais de organização e limpeza."
         }
       }
     },
@@ -100,17 +100,17 @@ export const translations = {
           subtitle: "Architecture Intern",
           desc: "Working in the development of high-end retail projects. Responsible for executive projects, 3D modeling, and photorealistic renderings for prestigious global brands, including: <strong>Swarovski, Burger King, Espaçolaser, and BlueFit</strong>. Absolute focus on visual identity standardization and technical excellence."
         },
-        trio: {
-          title: "Trio Arquitetura",
-          date: "2023 - 2024",
-          subtitle: "Intern",
-          desc: "Development of high-end residential projects. Involvement in the entire creative process, from preliminary studies to detailed executive projects. Also responsible for creating electronic mockups and renderings that materialize the initial concept of the project."
+        hering: {
+          title: "Hering",
+          date: "2023",
+          subtitle: "Store Assistant",
+          desc: "Hired as extra staff to assist with inventory management, store organization, and fitting room support."
         },
-        melo: {
-          title: "Melo Arquitetos",
-          date: "2023 - 2023",
-          subtitle: "Intern",
-          desc: "First practical contact with the dynamics of an architecture firm. Activities focused on the elaboration of detailed technical drawings and the development of basic electronic mockups, providing fundamental support to the workflow of the architecture team."
+        mcdonalds: {
+          title: "McDonald's",
+          date: "2023",
+          subtitle: "Restaurant Crew Member",
+          desc: "Customer service, food and dessert preparation, and general cleaning and organization tasks."
         }
       }
     },
