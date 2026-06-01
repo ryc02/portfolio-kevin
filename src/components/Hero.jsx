@@ -52,6 +52,7 @@ const Hero = () => {
           </p>
         </motion.div>
       </div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div 
@@ -87,7 +88,6 @@ const Hero = () => {
           }}
         />
       </motion.div>
-      </div>
     </section>
   );
 };
