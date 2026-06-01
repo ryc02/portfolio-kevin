@@ -354,7 +354,7 @@ const ProjectSlider = ({ project }) => {
                   <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                     {slide.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-                        <img src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)} style={{ width: '100%', height: 'auto', display: 'block' }} alt={`Board ${i}`} />
+                        <img src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)} style={{ width: '100%', height: 'auto', display: 'block' }} />
                       </div>
                     ))}
                   </motion.div>
