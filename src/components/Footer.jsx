@@ -1,27 +1,118 @@
 import React from 'react';
+import { Mail, Instagram, Phone, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer id="footer" style={{ backgroundColor: 'var(--text-primary)', color: 'var(--bg-color)', padding: '6rem 0', textAlign: 'center' }}>
-      <div className="container">
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '4rem', color: 'var(--accent-color)', marginBottom: '1rem' }}>
-          obrigado!
-        </h2>
-        <p style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '2px', marginBottom: '2rem' }}>
-          KEVIN NERY
-        </p>
-        <div style={{ opacity: 0.8, display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="tel:+5511997069737" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={e => e.target.style.textDecoration='underline'} onMouseOut={e => e.target.style.textDecoration='none'} aria-label="Telefone">
-            (11) 99706-9737
+    <footer id="footer" style={{ 
+      backgroundColor: 'var(--text-primary)', 
+      color: 'var(--bg-color)', 
+      padding: '10rem 0 4rem 0',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: '-100px' }}
+          style={{ textAlign: 'center', marginBottom: '6rem' }}
+        >
+          <h2 style={{ 
+            fontFamily: 'var(--font-serif)', 
+            fontSize: 'clamp(3rem, 6vw, 6rem)', 
+            color: 'var(--bg-color)', 
+            marginBottom: '1rem',
+            lineHeight: 1.1
+          }}>
+            Vamos conversar<br />
+            <span style={{ color: 'var(--accent-color)' }}>sobre seu projeto?</span>
+          </h2>
+          <p style={{ 
+            fontFamily: 'var(--font-sans)',
+            fontSize: '1.2rem',
+            color: 'rgba(255, 255, 255, 0.6)',
+            maxWidth: '500px',
+            margin: '0 auto'
+          }}>
+            Estou sempre aberto a novas oportunidades e desafios profissionais.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          viewport={{ once: true }}
+          style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: '3rem',
+            flexWrap: 'wrap',
+            marginBottom: '6rem'
+          }}
+        >
+          <a href="mailto:kevineryarq@gmail.com" 
+             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--bg-color)', textDecoration: 'none', fontSize: '1.1rem', transition: 'color 0.3s ease' }}
+             onMouseOver={e => e.currentTarget.style.color = 'var(--accent-color)'}
+             onMouseOut={e => e.currentTarget.style.color = 'var(--bg-color)'}
+          >
+            <Mail size={24} strokeWidth={1.5} />
+            <span>kevineryarq@gmail.com</span>
+            <ArrowUpRight size={16} style={{ opacity: 0.5 }} />
           </a>
-          <span>|</span>
-          <a href="mailto:kevineryarq@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={e => e.target.style.textDecoration='underline'} onMouseOut={e => e.target.style.textDecoration='none'} aria-label="E-mail">
-            kevineryarq@gmail.com
+          
+          <a href="https://instagram.com/neryy_arq" target="_blank" rel="noopener noreferrer"
+             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--bg-color)', textDecoration: 'none', fontSize: '1.1rem', transition: 'color 0.3s ease' }}
+             onMouseOver={e => e.currentTarget.style.color = 'var(--accent-color)'}
+             onMouseOut={e => e.currentTarget.style.color = 'var(--bg-color)'}
+          >
+            <Instagram size={24} strokeWidth={1.5} />
+            <span>@neryy_arq</span>
+            <ArrowUpRight size={16} style={{ opacity: 0.5 }} />
           </a>
-          <span>|</span>
-          <a href="https://instagram.com/neryy_arq" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={e => e.target.style.textDecoration='underline'} onMouseOut={e => e.target.style.textDecoration='none'} aria-label="Instagram">
-            @neryy_arq
+
+          <a href="tel:+5511997069737"
+             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--bg-color)', textDecoration: 'none', fontSize: '1.1rem', transition: 'color 0.3s ease' }}
+             onMouseOver={e => e.currentTarget.style.color = 'var(--accent-color)'}
+             onMouseOut={e => e.currentTarget.style.color = 'var(--bg-color)'}
+          >
+            <Phone size={24} strokeWidth={1.5} />
+            <span>(11) 99706-9737</span>
+            <ArrowUpRight size={16} style={{ opacity: 0.5 }} />
           </a>
+        </motion.div>
+
+        <div style={{ 
+          width: '100%', 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          paddingTop: '2rem',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <p style={{ 
+            fontFamily: 'var(--font-sans)', 
+            fontSize: '0.85rem', 
+            color: 'rgba(255, 255, 255, 0.4)',
+            letterSpacing: '1px',
+            textTransform: 'uppercase'
+          }}>
+            © 2026 Kevin Nery Rodrigues
+          </p>
+          <p style={{ 
+            fontFamily: 'var(--font-sans)', 
+            fontSize: '0.85rem', 
+            color: 'rgba(255, 255, 255, 0.4)',
+            letterSpacing: '1px',
+            textTransform: 'uppercase'
+          }}>
+            Arquitetura & Urbanismo
+          </p>
         </div>
       </div>
     </footer>
