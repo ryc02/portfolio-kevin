@@ -35,12 +35,12 @@ const projectsData = [
       },
       {
         type: "single-image",
-        image: "/assets/bahira_slide_acabamentos_novo.png",
+        image: "/assets/renders_sem_fundo.webp",
         theme: "dark"
       },
       {
         type: "single-image",
-        image: "/assets/bahira_slide3.webp",
+        image: "/assets/bahira_slide3.png",
         theme: "dark"
       }
     ]
