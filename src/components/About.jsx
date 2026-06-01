@@ -58,10 +58,7 @@ const TimelineItem = ({ title, date, subtitle, desc, isLast }) => (
 const About = () => {
   return (
     <section id="about" style={{ backgroundColor: '#ffffff', padding: '10rem 0' }}>
-      <div className="container" style={{ 
-        display: 'grid', 
-        gridTemplateColumns: '1fr 1fr', 
-        gap: '6rem',
+      <div className="container responsive-about-grid" style={{ 
         alignItems: 'start'
       }}>
         

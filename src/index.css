@@ -127,7 +127,12 @@ section {
 .responsive-about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 6rem;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -139,7 +144,16 @@ section {
 @media (max-width: 768px) {
   .grid-2, .responsive-about-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
+  }
+  
+  .header-nav {
+    gap: 1rem;
+  }
+  
+  .header-nav a {
+    font-size: 0.75rem !important;
+    letter-spacing: 1px !important;
   }
   
   .grid-5-cols {

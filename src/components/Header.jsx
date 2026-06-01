@@ -74,7 +74,7 @@ const Header = () => {
         </a>
       </div>
 
-      <nav style={{ display: 'flex', gap: '2.5rem' }}>
+      <nav className="header-nav">
         {[
           { name: 'Sobre', id: 'about' },
           { name: 'Projetos', id: 'project-index' },
