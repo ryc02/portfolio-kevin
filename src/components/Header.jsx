@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import MagneticButton from './MagneticButton';
 
 const Header = () => {
   const { scrollY } = useScroll();
@@ -60,20 +61,24 @@ const Header = () => {
       }}
     >
       <div style={{ flex: 1 }}>
-        <a 
-          href="#hero" 
-          onClick={(e) => handleNavClick(e, 'hero')}
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '1.2rem',
-            color: scrolled ? 'var(--text-primary)' : '#ffffff',
-            textDecoration: 'none',
-            fontWeight: 600,
-            letterSpacing: '1px'
-          }}
-        >
-          KN.
-        </a>
+        <MagneticButton>
+          <a 
+            href="#hero" 
+            onClick={(e) => handleNavClick(e, 'hero')}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: '1.2rem',
+              color: scrolled ? 'var(--text-primary)' : '#ffffff',
+              textDecoration: 'none',
+              fontWeight: 600,
+              letterSpacing: '1px',
+              display: 'inline-block',
+              padding: '10px'
+            }}
+          >
+            KN.
+          </a>
+        </MagneticButton>
       </div>
 
       <nav className="header-nav" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
@@ -82,55 +87,60 @@ const Header = () => {
           { name: t('nav.projects'), id: 'project-index' },
           { name: t('nav.contact'), id: 'footer' }
         ].map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            onClick={(e) => handleNavClick(e, item.id)}
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.9rem',
-              color: scrolled ? 'var(--text-primary)' : '#ffffff',
-              textDecoration: 'none',
-              textTransform: 'uppercase',
-              letterSpacing: '2px',
-              fontWeight: 500,
-              cursor: 'pointer',
-              transition: 'color 0.3s ease'
-            }}
-            onMouseOver={(e) => e.target.style.color = 'var(--accent-color)'}
-            onMouseOut={(e) => e.target.style.color = scrolled ? 'var(--text-primary)' : '#ffffff'}
-          >
-            {item.name}
-          </a>
+          <MagneticButton key={item.id}>
+            <a
+              href={`#${item.id}`}
+              onClick={(e) => handleNavClick(e, item.id)}
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.9rem',
+                color: scrolled ? 'var(--text-primary)' : '#ffffff',
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                letterSpacing: '2px',
+                fontWeight: 500,
+                cursor: 'pointer',
+                transition: 'color 0.3s ease',
+                display: 'inline-block',
+                padding: '10px'
+              }}
+              onMouseOver={(e) => e.target.style.color = 'var(--accent-color)'}
+              onMouseOut={(e) => e.target.style.color = scrolled ? 'var(--text-primary)' : '#ffffff'}
+            >
+              {item.name}
+            </a>
+          </MagneticButton>
         ))}
         
         {/* Language Toggle */}
-        <button
-          onClick={toggleLanguage}
-          style={{
-            background: 'none',
-            border: scrolled ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.3)',
-            padding: '4px 8px',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontFamily: 'var(--font-sans)',
-            fontSize: '0.8rem',
-            fontWeight: 600,
-            color: scrolled ? 'var(--text-primary)' : '#ffffff',
-            transition: 'all 0.3s ease',
-            marginLeft: '1rem',
-          }}
-          onMouseOver={(e) => {
-            e.target.style.borderColor = 'var(--accent-color)';
-            e.target.style.color = 'var(--accent-color)';
-          }}
-          onMouseOut={(e) => {
-            e.target.style.borderColor = scrolled ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.3)';
-            e.target.style.color = scrolled ? 'var(--text-primary)' : '#ffffff';
-          }}
-        >
-          {language === 'pt' ? 'EN' : 'PT'}
-        </button>
+        <MagneticButton>
+          <button
+            onClick={toggleLanguage}
+            style={{
+              background: 'none',
+              border: scrolled ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.3)',
+              padding: '6px 12px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              color: scrolled ? 'var(--text-primary)' : '#ffffff',
+              transition: 'all 0.3s ease',
+              marginLeft: '0.5rem',
+            }}
+            onMouseOver={(e) => {
+              e.target.style.borderColor = 'var(--accent-color)';
+              e.target.style.color = 'var(--accent-color)';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.borderColor = scrolled ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.3)';
+              e.target.style.color = scrolled ? 'var(--text-primary)' : '#ffffff';
+            }}
+          >
+            {language === 'pt' ? 'EN' : 'PT'}
+          </button>
+        </MagneticButton>
       </nav>
     </motion.header>
   );
