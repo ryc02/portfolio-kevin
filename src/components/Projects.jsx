@@ -120,6 +120,7 @@ const staggerVariants = {
 const ProjectSlider = ({ project }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const totalSlides = project.slides.length;
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const nextSlide = () => setActiveSlide((p) => (p + 1) % totalSlides);
   const prevSlide = () => setActiveSlide((p) => (p - 1 + totalSlides) % totalSlides);
@@ -164,33 +165,33 @@ const ProjectSlider = ({ project }) => {
                     {slide.panoramaTop ? (
                       <div style={{ display: 'grid', gridTemplateColumns: slide.gridCols, gridTemplateRows: slide.gridRows, gap: '8px', width: '100%' }}>
                         <div style={{ gridColumn: '1 / -1', overflow: 'hidden', border: '1px solid var(--text-primary)', aspectRatio: '3.04' }}>
-                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[0]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[0]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[0])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ overflow: 'hidden', border: '1px solid var(--text-primary)', aspectRatio: '1.52' }}>
-                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[1]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[1]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[1])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ overflow: 'hidden', border: '1px solid var(--text-primary)', aspectRatio: '1.52' }}>
-                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[2]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[2]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[2])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                       </div>
                     ) : slide.gridCols === "1fr 1fr 1fr" ? (
                       <div style={{ display: 'grid', gridTemplateColumns: slide.gridCols, gap: '8px', width: '100%' }}>
                         {slide.images.map((img, i) => (
                            <div key={i} style={{ overflow: 'hidden', border: '1px solid var(--text-primary)', aspectRatio: '0.75' }}>
-                             <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                             <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                            </div>
                         ))}
                       </div>
                     ) : (
                       <div style={{ display: 'grid', gridTemplateColumns: slide.gridCols, gridTemplateRows: slide.gridRows, gap: '8px', width: '100%' }}>
                         <div style={{ gridColumn: '1', gridRow: '1', overflow: 'hidden', border: '1px solid var(--text-primary)' }}>
-                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[0]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[0]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[0])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ gridColumn: '1', gridRow: '2', overflow: 'hidden', border: '1px solid var(--text-primary)' }}>
-                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[1]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[1]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[1])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ gridColumn: '2', gridRow: '1 / span 2', overflow: 'hidden', border: '1px solid var(--text-primary)' }}>
-                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[2]} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                          <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[2]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[2])}  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                         </div>
                       </div>
                     )}
@@ -209,7 +210,7 @@ const ProjectSlider = ({ project }) => {
                 <div className="container" style={{ display: 'grid', gridTemplateColumns: isReversed ? '1fr 1.8fr' : '1.8fr 1fr', gap: '4rem', alignItems: 'center' }}>
                   {isReversed && renderIntroText(slide.theme === 'dark')}
                   <motion.div initial={{ opacity: 0, x: isReversed ? 50 : -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={slide.image} alt="Planta Baixa" style={{ width: '100%', height: 'auto', transform: `scale(${scaleValue})`, transformOrigin: isReversed ? 'center left' : 'center right' }} />
+                    <img src={slide.image} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.image)} style={{ width: '100%', height: 'auto', transform: `scale(${scaleValue})`, transformOrigin: isReversed ? 'center left' : 'center right' }} />
                   </motion.div>
                   {!isReversed && renderIntroText(slide.theme === 'dark')}
                 </div>
@@ -223,13 +224,13 @@ const ProjectSlider = ({ project }) => {
                 <div className="container" style={{ position: 'relative' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: slide.gridCols, gridTemplateRows: slide.gridRows, gap: '8px', height: '80vh', width: '100%' }}>
                     <div style={{ gridColumn: '1', gridRow: '1 / span 2', overflow: 'hidden' }}>
-                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[0]} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[0]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[0])}  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                     </div>
                     <div style={{ gridColumn: '2', gridRow: '1', overflow: 'hidden' }}>
-                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[1]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[1]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[1])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div style={{ gridColumn: '2', gridRow: '2', overflow: 'hidden' }}>
-                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[2]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={slide.images[2]} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.images[2])}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                   </div>
                 </div>
@@ -242,16 +243,16 @@ const ProjectSlider = ({ project }) => {
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '6rem 0', backgroundColor: 'var(--text-primary)' }}>
                 <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr', gap: '2rem', alignItems: 'center' }}>
                   <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={slide.imageLeft} alt="Technical" style={{ width: '100%', height: 'auto', transform: 'scale(1.15)', transformOrigin: 'center left' }} />
+                    <img src={slide.imageLeft} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.imageLeft)} style={{ width: '100%', height: 'auto', transform: 'scale(1.15)', transformOrigin: 'center left' }} />
                   </motion.div>
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ height: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {slide.imageRight ? (
-                      <img src={slide.imageRight} alt="Grid" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      <img src={slide.imageRight} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.imageRight)} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     ) : (
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', gap: '12px', width: '100%', height: '100%' }}>
                         {slide.imagesRight.map((img, i) => (
                           <div key={i} style={{ overflow: 'hidden', border: '2px solid var(--bg-color)' }}>
-                            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                           </div>
                         ))}
                       </div>
@@ -271,8 +272,7 @@ const ProjectSlider = ({ project }) => {
                     whileInView={{ opacity: 1, scale: 1 }} 
                     transition={{ duration: 1, ease: 'easeOut' }} 
                     viewport={{ once: true }} 
-                    src={slide.image} 
-                    alt="Slide" 
+                    src={slide.image} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.image)}  
                     style={{ width: '100%', height: 'auto', maxHeight: '85vh', objectFit: 'contain' }} 
                   />
                 </div>
@@ -287,7 +287,7 @@ const ProjectSlider = ({ project }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', height: '80vh' }}>
                     {slide.images.slice(0, 4).map((img, i) => (
                       <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.8 }} style={{ overflow: 'hidden', border: '1px solid var(--text-primary)' }}>
-                        <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       </motion.div>
                     ))}
                   </div>
@@ -301,10 +301,10 @@ const ProjectSlider = ({ project }) => {
               <section key={index} style={{ width: '100vw', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '4rem 0', backgroundColor: slide.theme === 'dark' ? 'var(--text-primary)' : 'var(--bg-color)' }}>
                 <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
                   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ width: '100%', overflow: 'hidden' }}>
-                    <motion.img whileHover={{ scale: 1.02 }} transition={{ duration: 0.6 }} src={slide.image1} alt="Grid Top" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                    <motion.img whileHover={{ scale: 1.02 }} transition={{ duration: 0.6 }} src={slide.image1} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.image1)}  style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </motion.div>
                   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }} viewport={{ once: true }} style={{ width: '100%', overflow: 'hidden' }}>
-                    <motion.img whileHover={{ scale: 1.02 }} transition={{ duration: 0.6 }} src={slide.image2} alt="Grid Bottom" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                    <motion.img whileHover={{ scale: 1.02 }} transition={{ duration: 0.6 }} src={slide.image2} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(slide.image2)}  style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </motion.div>
                 </div>
               </section>
@@ -321,7 +321,7 @@ const ProjectSlider = ({ project }) => {
                     <div key={colIndex} style={{ display: 'flex', flexDirection: 'column', gap: slide.gap || '2rem', height: '100%' }}>
                       {col.map((img, i) => (
                         <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: (colIndex * 0.2) + (i * 0.1), duration: 0.8 }} style={{ overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-                          <img src={img} style={{ width: '100%', height: 'auto', display: 'block' }} alt="Gallery Item" />
+                          <img src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)} style={{ width: '100%', height: 'auto', display: 'block' }} />
                         </motion.div>
                       ))}
                     </div>
@@ -339,7 +339,7 @@ const ProjectSlider = ({ project }) => {
                 <div className="container" style={{ display: 'flex', gap: '20px', height: '80vh', justifyContent: 'center' }}>
                   {slide.images.map((img, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15, duration: 0.8 }} style={{ flex: 1, overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)}  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </motion.div>
                   ))}
                 </div>
@@ -354,7 +354,7 @@ const ProjectSlider = ({ project }) => {
                   <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: 'easeOut' }} viewport={{ once: true }} style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                     {slide.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-                        <img src={img} style={{ width: '100%', height: 'auto', display: 'block' }} alt={`Board ${i}`} />
+                        <img src={img} alt={`${project.title} - Imagem`} loading="lazy" onClick={() => setLightboxImage(img)} style={{ width: '100%', height: 'auto', display: 'block' }} alt={`Board ${i}`} />
                       </div>
                     ))}
                   </motion.div>
@@ -393,6 +393,16 @@ const Projects = () => {
       {projectsData.map((project) => (
         <ProjectSlider key={project.id} project={project} />
       ))}
+
+      {/* Lightbox Overlay */}
+      {lightboxImage && (
+        <div 
+          style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out' }}
+          onClick={() => setLightboxImage(null)}
+        >
+          <img src={lightboxImage} alt="Fullscreen" style={{ maxHeight: '90vh', maxWidth: '90vw', objectFit: 'contain' }} />
+        </div>
+      )}
     </div>
   );
 };

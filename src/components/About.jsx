@@ -1,19 +1,20 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
     <section id="about" style={{ backgroundColor: '#ffffff' }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem' }}>
+      <div className="container responsive-about-grid">
         
         {/* Name and Basic Info */}
-        <div style={{ gridColumn: '1 / -1', marginBottom: '2rem' }}>
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true, margin: '-100px' }} style={{ gridColumn: '1 / -1', marginBottom: '2rem' }}>
           <h4 className="subtitle" style={{ color: 'var(--accent-color)', marginBottom: '0.5rem' }}>nome</h4>
           <h3 className="title-section" style={{ marginBottom: '0.5rem' }}>Kevin Nery Rodrigues</h3>
           <p className="text-body" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>22 anos (17.11.2003) | São Paulo - SP</p>
-        </div>
+        </motion.div>
 
         {/* Column 1 */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} viewport={{ once: true, margin: '-100px' }} style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
           <div>
             <h4 className="title-section" style={{ fontSize: '2rem', color: 'var(--accent-color)' }}>interesses</h4>
             <p className="text-body">
@@ -27,10 +28,10 @@ const About = () => {
             <p style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '1.2rem', marginBottom: '0.2rem' }}>Universidade Cidade de São Paulo</p>
             <p className="text-body">Arquitetura e Urbanismo (9° Semestre)</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Column 2 */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} viewport={{ once: true, margin: '-100px' }} style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
           <div>
             <h4 className="title-section" style={{ fontSize: '2rem', color: 'var(--accent-color)' }}>trajetória</h4>
             
@@ -52,7 +53,7 @@ const About = () => {
               <p className="text-body">Auxiliar de loja contratado como extra onde realizava funções como estoque, organização de loja e provador.</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

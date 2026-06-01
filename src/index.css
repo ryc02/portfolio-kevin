@@ -107,7 +107,7 @@ section {
   padding: 8rem 0;
 }
 
-/* Utility */
+/* Utility Grids */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -115,8 +115,42 @@ section {
   align-items: center;
 }
 
+.grid-5-cols {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.responsive-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+@media (max-width: 1024px) {
+  .grid-5-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-  .grid-2 {
+  .grid-2, .responsive-about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .grid-5-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .title-huge {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-5-cols {
     grid-template-columns: 1fr;
   }
 }

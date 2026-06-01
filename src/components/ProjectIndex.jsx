@@ -33,12 +33,7 @@ const ProjectIndex = () => {
     <section id="project-index" style={{ backgroundColor: 'var(--bg-color)', padding: '6rem 0' }}>
       <div className="container" style={{ maxWidth: '1400px', padding: '0 2rem' }}>
         
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '1.5rem',
-          alignItems: 'stretch'
-        }}>
+        <div className="grid-5-cols">
           
           {indexData.map((item) => (
             <div key={item.id} style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
@@ -68,7 +63,8 @@ const ProjectIndex = () => {
 
                 <img 
                   src={item.image} 
-                  alt={item.title} 
+                  alt={item.title}
+                  loading="lazy"
                   style={{
                     width: '100%',
                     height: '400px',
