@@ -117,10 +117,9 @@ const staggerVariants = {
   })
 };
 
-const ProjectSlider = ({ project }) => {
+const ProjectSlider = ({ project, setLightboxImage }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const totalSlides = project.slides.length;
-  const [lightboxImage, setLightboxImage] = useState(null);
 
   const nextSlide = () => setActiveSlide((p) => (p + 1) % totalSlides);
   const prevSlide = () => setActiveSlide((p) => (p - 1 + totalSlides) % totalSlides);
@@ -388,10 +387,12 @@ const ProjectSlider = ({ project }) => {
 };
 
 const Projects = () => {
+  const [lightboxImage, setLightboxImage] = useState(null);
+
   return (
     <div id="projects">
       {projectsData.map((project) => (
-        <ProjectSlider key={project.id} project={project} />
+        <ProjectSlider key={project.id} project={project} setLightboxImage={setLightboxImage} />
       ))}
 
       {/* Lightbox Overlay */}
