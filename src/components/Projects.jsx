@@ -125,7 +125,7 @@ const ProjectSlider = ({ project }) => {
   const prevSlide = () => setActiveSlide((p) => (p - 1 + totalSlides) % totalSlides);
 
   const renderIntroText = (isDark = false) => (
-    <div style={{ paddingRight: isDark ? '0' : '4rem', paddingLeft: isDark ? '4rem' : '0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <div className="project-intro-text" style={{ paddingRight: isDark ? '0' : 'clamp(1rem, 4vw, 4rem)', paddingLeft: isDark ? 'clamp(1rem, 4vw, 4rem)' : '0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <motion.h2 custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerVariants} style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(4rem, 8vw, 7rem)', color: isDark ? 'var(--accent-light)' : 'var(--accent-color)', lineHeight: 0.9, fontWeight: 400, marginBottom: '1rem', textAlign: isDark ? 'right' : 'left' }}>
         {project.id}.
       </motion.h2>
@@ -370,16 +370,33 @@ const ProjectSlider = ({ project }) => {
 
       {totalSlides > 1 && (
         <div style={{ position: 'absolute', bottom: '3rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '2rem', zIndex: 10 }}>
-          <button onClick={prevSlide} style={{ background: 'none', border: 'none', cursor: 'pointer', color: activeSlide === 0 ? 'var(--text-secondary)' : 'var(--text-primary)', opacity: activeSlide === 0 ? 0.3 : 1, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px' }} disabled={activeSlide === 0}>
-            <ArrowLeft size={32} strokeWidth={1} color={project.slides[activeSlide]?.theme === 'dark' ? 'var(--bg-color)' : 'var(--text-primary)'} />
+          <button 
+            onClick={prevSlide} 
+            aria-label="Slide anterior"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: activeSlide === 0 ? 'var(--text-secondary)' : 'var(--text-primary)', opacity: activeSlide === 0 ? 0.3 : 1, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px' }} 
+            disabled={activeSlide === 0}
+          >
+            <ArrowLeft size={32} strokeWidth={1} color={project.slides[activeSlide]?.theme === 'dark' ? 'var(--bg-color)' : 'var(--text-primary)'} aria-hidden="true" />
           </button>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display: 'flex', gap: '10px' }} role="tablist" aria-label="Navegação de slides">
             {[...Array(totalSlides)].map((_, idx) => (
-              <div key={idx} onClick={() => setActiveSlide(idx)} style={{ height: '2px', width: activeSlide === idx ? '60px' : '20px', backgroundColor: project.slides[activeSlide]?.theme === 'dark' ? (activeSlide === idx ? 'var(--bg-color)' : 'var(--text-secondary)') : (activeSlide === idx ? 'var(--text-primary)' : 'var(--accent-color)'), transition: 'all 0.5s cubic-bezier(0.83, 0, 0.17, 1)', cursor: 'pointer' }} />
+              <button 
+                key={idx} 
+                onClick={() => setActiveSlide(idx)} 
+                role="tab"
+                aria-selected={activeSlide === idx}
+                aria-label={`Ir para slide ${idx + 1} de ${totalSlides}`}
+                style={{ height: '2px', width: activeSlide === idx ? '60px' : '20px', backgroundColor: project.slides[activeSlide]?.theme === 'dark' ? (activeSlide === idx ? 'var(--bg-color)' : 'var(--text-secondary)') : (activeSlide === idx ? 'var(--text-primary)' : 'var(--accent-color)'), transition: 'all 0.5s cubic-bezier(0.83, 0, 0.17, 1)', cursor: 'pointer', border: 'none', padding: 0 }} 
+              />
             ))}
           </div>
-          <button onClick={nextSlide} style={{ background: 'none', border: 'none', cursor: 'pointer', color: activeSlide === totalSlides - 1 ? 'var(--text-secondary)' : 'var(--text-primary)', opacity: activeSlide === totalSlides - 1 ? 0.3 : 1, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px' }} disabled={activeSlide === totalSlides - 1}>
-            <ArrowRight size={32} strokeWidth={1} color={project.slides[activeSlide]?.theme === 'dark' ? 'var(--bg-color)' : 'var(--text-primary)'} />
+          <button 
+            onClick={nextSlide} 
+            aria-label="Próximo slide"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: activeSlide === totalSlides - 1 ? 'var(--text-secondary)' : 'var(--text-primary)', opacity: activeSlide === totalSlides - 1 ? 0.3 : 1, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px' }} 
+            disabled={activeSlide === totalSlides - 1}
+          >
+            <ArrowRight size={32} strokeWidth={1} color={project.slides[activeSlide]?.theme === 'dark' ? 'var(--bg-color)' : 'var(--text-primary)'} aria-hidden="true" />
           </button>
         </div>
       )}
@@ -389,11 +406,11 @@ const ProjectSlider = ({ project }) => {
 
 const Projects = () => {
   return (
-    <div id="projects">
+    <section id="projects" aria-label="Galeria de projetos">
       {projectsData.map((project) => (
         <ProjectSlider key={project.id} project={project} />
       ))}
-    </div>
+    </section>
   );
 };
 

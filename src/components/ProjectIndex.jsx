@@ -30,75 +30,155 @@ const indexData = [
 
 const ProjectIndex = () => {
   return (
-    <section id="project-index" style={{ backgroundColor: 'var(--bg-color)', padding: '6rem 0' }}>
+    <section 
+      id="project-index" 
+      aria-labelledby="projects-heading"
+      style={{ backgroundColor: 'var(--bg-color)', padding: '6rem 0' }}
+    >
       <div className="container" style={{ maxWidth: '1400px', padding: '0 2rem' }}>
         
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '1.5rem',
-          alignItems: 'stretch'
-        }}>
-          
+        <h2 id="projects-heading" className="sr-only">Índice de Projetos</h2>
+        
+        <div className="project-index-grid">
           {indexData.map((item) => (
-            <div key={item.id} style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
-              
+            <article 
+              key={item.id} 
+              className="project-index-item"
+            >
               {/* Image Container with Border */}
-              <div style={{
-                border: '2px solid var(--text-primary)',
-                padding: '0.2rem', // Small gap between border and image if desired, or 0
-                flexGrow: 1,
-                display: 'flex',
-                position: 'relative'
-              }}>
+              <div className="project-image-container">
                 {/* ID Badge */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-1px',
-                  left: '-1px',
-                  backgroundColor: 'var(--text-primary)',
-                  color: '#ffffff',
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.2rem',
-                  padding: '0.5rem 1rem',
-                  zIndex: 2
-                }}>
+                <div 
+                  className="project-id-badge"
+                  aria-hidden="true"
+                >
                   {item.id}
                 </div>
 
                 <img 
                   src={item.image} 
-                  alt={item.title} 
-                  style={{
-                    width: '100%',
-                    height: '400px',
-                    objectFit: 'cover',
-                    display: 'block'
-                  }}
+                  alt={`Capa do projeto ${item.title} - Render 3D`} 
+                  loading="lazy"
+                  className="project-image"
                 />
               </div>
 
               {/* Title Block below image */}
-              <div style={{
-                backgroundColor: 'var(--text-primary)',
-                color: '#ffffff',
-                textAlign: 'center',
-                padding: '1.2rem 0.5rem',
-                marginTop: '1rem',
-                fontFamily: 'var(--font-sans)',
-                letterSpacing: '1px',
-                fontSize: '0.9rem',
-                fontWeight: 500
-              }}>
+              <h3 className="project-title">
                 {item.title}
-              </div>
-
-            </div>
+              </h3>
+            </article>
           ))}
-
         </div>
 
       </div>
+
+      <style>{`
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border-width: 0;
+        }
+        
+        .project-index-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.5rem;
+          align-items: stretch;
+        }
+        
+        .project-index-item {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+        }
+        
+        .project-image-container {
+          border: 2px solid var(--text-primary);
+          padding: 0.2rem;
+          flex-grow: 1;
+          display: flex;
+          position: relative;
+        }
+        
+        .project-id-badge {
+          position: absolute;
+          top: -1px;
+          left: -1px;
+          background-color: var(--text-primary);
+          color: #ffffff;
+          font-family: var(--font-serif);
+          font-size: 1.2rem;
+          padding: 0.5rem 1rem;
+          z-index: 2;
+        }
+        
+        .project-image {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+          display: block;
+        }
+        
+        .project-title {
+          background-color: var(--text-primary);
+          color: #ffffff;
+          text-align: center;
+          padding: 1.2rem 0.5rem;
+          margin-top: 1rem;
+          font-family: var(--font-sans);
+          letter-spacing: 1px;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+        
+        @media (max-width: 1200px) {
+          .project-index-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          
+          .project-image {
+            height: 350px;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .project-index-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+          }
+          
+          .project-image {
+            height: 280px;
+          }
+          
+          .project-id-badge {
+            font-size: 1rem;
+            padding: 0.4rem 0.8rem;
+          }
+          
+          .project-title {
+            padding: 1rem 0.5rem;
+            font-size: 0.8rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .project-index-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .project-image {
+            height: 300px;
+          }
+        }
+      `}</style>
     </section>
   );
 };
