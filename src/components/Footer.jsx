@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Instagram, Phone, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -69,7 +69,7 @@ const Footer = () => {
              onMouseOver={e => e.currentTarget.style.color = 'var(--accent-color)'}
              onMouseOut={e => e.currentTarget.style.color = 'var(--bg-color)'}
           >
-            <Instagram size={24} strokeWidth={1.5} />
+            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Ig</span>
             <span>@neryy_arq</span>
             <ArrowUpRight size={16} style={{ opacity: 0.5 }} />
           </a>
