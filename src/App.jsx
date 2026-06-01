@@ -6,6 +6,7 @@ import ProjectIndex from './components/ProjectIndex';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="app">
+      <CustomCursor />
       
       <AnimatePresence>
         {loading && <Loader key="loader" onLoadingComplete={() => setLoading(false)} />}
