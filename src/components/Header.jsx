@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 const Header = () => {
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    // Blur effect when scrolled past 50px
+    if (latest > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+
+    // Hide header on scroll down, show on scroll up (or at top)
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
@@ -25,9 +36,12 @@ const Header = () => {
 
   return (
     <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" }
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
       style={{
         position: 'fixed',
         top: 0,
@@ -37,7 +51,6 @@ const Header = () => {
         backgroundColor: scrolled ? 'rgba(252, 248, 243, 0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.05)' : 'none',
-        transition: 'all 0.3s ease',
         zIndex: 1000,
         display: 'flex',
         alignItems: 'center',

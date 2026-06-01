@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import ProjectIndex from './components/ProjectIndex';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
+import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="app">
+      <CustomCursor />
+      
+      <AnimatePresence>
+        {loading && <Loader key="loader" onLoadingComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
       <Header />
       <Hero />
       <About />
