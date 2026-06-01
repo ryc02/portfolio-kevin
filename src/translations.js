@@ -21,7 +21,7 @@ export const translations = {
           title: "Vista Concept",
           date: "2024 - Atualmente",
           subtitle: "Estagiário de Arquitetura",
-          desc: "Atuação no desenvolvimento de projetos de varejo de alto padrão. Responsável por projetos executivos, modelagem 3D e renderizações fotorrealistas para marcas globais de prestígio, incluindo: Swarovski, Burger King, Espaçolaser e BlueFit. Foco absoluto na padronização da identidade visual e excelência técnica."
+          desc: "Atuação no desenvolvimento de projetos de varejo de alto padrão. Responsável por projetos executivos, modelagem 3D e renderizações fotorrealistas para marcas globais de prestígio, incluindo: <strong>Swarovski, Burger King, Espaçolaser e BlueFit</strong>. Foco absoluto na padronização da identidade visual e excelência técnica."
         },
         trio: {
           title: "Trio Arquitetura",
@@ -98,7 +98,7 @@ export const translations = {
           title: "Vista Concept",
           date: "2024 - Present",
           subtitle: "Architecture Intern",
-          desc: "Working in the development of high-end retail projects. Responsible for executive projects, 3D modeling, and photorealistic renderings for prestigious global brands, including: Swarovski, Burger King, Espaçolaser, and BlueFit. Absolute focus on visual identity standardization and technical excellence."
+          desc: "Working in the development of high-end retail projects. Responsible for executive projects, 3D modeling, and photorealistic renderings for prestigious global brands, including: <strong>Swarovski, Burger King, Espaçolaser, and BlueFit</strong>. Absolute focus on visual identity standardization and technical excellence."
         },
         trio: {
           title: "Trio Arquitetura",
