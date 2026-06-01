@@ -66,7 +66,7 @@ const Header = () => {
           style={{
             fontFamily: 'var(--font-serif)',
             fontSize: '1.2rem',
-            color: 'var(--text-primary)',
+            color: scrolled ? 'var(--text-primary)' : '#ffffff',
             textDecoration: 'none',
             fontWeight: 600,
             letterSpacing: '1px'
@@ -89,7 +89,7 @@ const Header = () => {
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: '0.9rem',
-              color: 'var(--text-primary)',
+              color: scrolled ? 'var(--text-primary)' : '#ffffff',
               textDecoration: 'none',
               textTransform: 'uppercase',
               letterSpacing: '2px',
@@ -98,7 +98,7 @@ const Header = () => {
               transition: 'color 0.3s ease'
             }}
             onMouseOver={(e) => e.target.style.color = 'var(--accent-color)'}
-            onMouseOut={(e) => e.target.style.color = 'var(--text-primary)'}
+            onMouseOut={(e) => e.target.style.color = scrolled ? 'var(--text-primary)' : '#ffffff'}
           >
             {item.name}
           </a>
@@ -109,14 +109,14 @@ const Header = () => {
           onClick={toggleLanguage}
           style={{
             background: 'none',
-            border: '1px solid rgba(0,0,0,0.1)',
+            border: scrolled ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.3)',
             padding: '4px 8px',
             borderRadius: '4px',
             cursor: 'pointer',
             fontFamily: 'var(--font-sans)',
             fontSize: '0.8rem',
             fontWeight: 600,
-            color: 'var(--text-primary)',
+            color: scrolled ? 'var(--text-primary)' : '#ffffff',
             transition: 'all 0.3s ease',
             marginLeft: '1rem',
           }}
@@ -125,8 +125,8 @@ const Header = () => {
             e.target.style.color = 'var(--accent-color)';
           }}
           onMouseOut={(e) => {
-            e.target.style.borderColor = 'rgba(0,0,0,0.1)';
-            e.target.style.color = 'var(--text-primary)';
+            e.target.style.borderColor = scrolled ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.3)';
+            e.target.style.color = scrolled ? 'var(--text-primary)' : '#ffffff';
           }}
         >
           {language === 'pt' ? 'EN' : 'PT'}

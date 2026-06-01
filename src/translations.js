@@ -8,7 +8,8 @@ export const translations = {
     hero: {
       title: "KEVIN",
       lastName: "NERY",
-      subtitle: "ARQUITETURA & URBANISMO"
+      subtitle: "Arquiteto & Urbanista",
+      scroll: "SCROLL"
     },
     about: {
       title: "SOBRE MIM",
@@ -79,7 +80,8 @@ export const translations = {
     hero: {
       title: "KEVIN",
       lastName: "NERY",
-      subtitle: "ARCHITECTURE & URBANISM"
+      subtitle: "Architect & Urban Planner",
+      scroll: "SCROLL"
     },
     about: {
       title: "ABOUT ME",
