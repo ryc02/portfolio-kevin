@@ -87,8 +87,8 @@ const About = () => {
               </p>
             </div>
 
-            <p className="text-body" style={{ fontSize: '1.1rem', maxWidth: '400px' }}>
-              Possuo um grande interesse por representação gráfica e imagens 3D, tendo um desejo em poder desenvolver mais minhas habilidades e conhecimentos nessa área para poder assim agregar não só a mim como também em meu local de trabalho.
+            <p className="text-body" style={{ fontSize: '1.1rem', maxWidth: '450px' }}>
+              Especialista em representação gráfica e visualização arquitetônica 3D. Meu foco é traduzir conceitos complexos em experiências espaciais imersivas e fotorrealistas. Mais do que desenhar projetos, minha missão é elevar a percepção de valor de cada ambiente, unindo <strong>excelência estética</strong> a um <strong>rigor executivo</strong> impecável.
             </p>
           </motion.div>
         </div>
@@ -117,8 +117,12 @@ const About = () => {
             <TimelineItem 
               title="Vista Concept"
               date="2024 - Atualmente"
-              subtitle="Estagiário"
-              desc="Escritório focado em arquitetura de varejo onde realizo projetos para marcas como BlueFit, Espaço Laser, Swarovski e Burguer King. Possuo demandas como projetos executivos, modelagem 3D e renderizações."
+              subtitle="Estagiário de Arquitetura"
+              desc={
+                <>
+                  Atuação no desenvolvimento de projetos de varejo de alto padrão. Responsável por projetos executivos, modelagem 3D e renderizações fotorrealistas para marcas globais de prestígio, incluindo: <strong>Swarovski, Burger King, Espaçolaser e BlueFit</strong>. Foco absoluto na padronização da identidade visual e excelência técnica.
+                </>
+              }
             />
             
             <TimelineItem 

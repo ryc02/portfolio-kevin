@@ -37,7 +37,8 @@ const Footer = () => {
             maxWidth: '500px',
             margin: '0 auto'
           }}>
-            Estou sempre aberto a novas oportunidades e desafios profissionais.
+            Buscando elevar o nível visual e técnico dos seus projetos? 
+            Atualmente aberto para novas parcerias estratégicas e oportunidades desafiadoras.
           </p>
         </motion.div>
 
