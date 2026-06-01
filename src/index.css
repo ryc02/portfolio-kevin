@@ -159,6 +159,7 @@ section {
   .grid-5-cols {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
 .title-huge {
   font-size: clamp(2.5rem, 12vw, 9rem);
