@@ -4,13 +4,13 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const indexData = [
   { id: "01", title: "VITTA STUDIO", image: "/assets/capa-vitta-studio.webp" },
-  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira.webp", objectPosition: "bottom", objectFit: "cover" },
+  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira.webp", objectPosition: "bottom", objectFit: "cover", scale: 2, transformOrigin: "bottom center" },
   { id: "03", title: "AMBEV", image: "/assets/capa-ambev.webp" },
   { id: "04", title: "WOODORA", image: "/assets/capa-woodora.webp" },
   { id: "05", title: "L.A.N.S", image: "/assets/capa-lans.webp" }
 ];
 
-const ParallaxThumbnail = ({ src, alt, objectPosition = 'center', objectFit = 'cover' }) => {
+const ParallaxThumbnail = ({ src, alt, objectPosition = 'center', objectFit = 'cover', scale = 1, transformOrigin = 'center' }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -39,7 +39,9 @@ const ParallaxThumbnail = ({ src, alt, objectPosition = 'center', objectFit = 'c
           display: 'block',
           y,
           position: 'absolute',
-          top: '-15%'
+          top: '-15%',
+          scale: scale,
+          transformOrigin: transformOrigin
         }}
       />
     </div>
@@ -102,7 +104,7 @@ const ProjectIndex = () => {
                   {item.id}
                 </div>
 
-                <ParallaxThumbnail src={item.image} alt={item.title} objectPosition={item.objectPosition} objectFit={item.objectFit} />
+                <ParallaxThumbnail src={item.image} alt={item.title} objectPosition={item.objectPosition} objectFit={item.objectFit} scale={item.scale} transformOrigin={item.transformOrigin} />
               </div>
 
               {/* Title Block below image */}
