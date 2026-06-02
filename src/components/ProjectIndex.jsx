@@ -4,13 +4,13 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const indexData = [
   { id: "01", title: "VITTA STUDIO", image: "/assets/capa-vitta-studio.webp" },
-  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira.webp" },
+  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira.webp", objectPosition: "bottom" },
   { id: "03", title: "AMBEV", image: "/assets/capa-ambev.webp" },
   { id: "04", title: "WOODORA", image: "/assets/capa-woodora.webp" },
   { id: "05", title: "L.A.N.S", image: "/assets/capa-lans.webp" }
 ];
 
-const ParallaxThumbnail = ({ src, alt }) => {
+const ParallaxThumbnail = ({ src, alt, objectPosition = 'center' }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -35,6 +35,7 @@ const ParallaxThumbnail = ({ src, alt }) => {
           width: '100%',
           height: '130%', // extra height to allow scrolling
           objectFit: 'cover',
+          objectPosition: objectPosition,
           display: 'block',
           y,
           position: 'absolute',
@@ -101,7 +102,7 @@ const ProjectIndex = () => {
                   {item.id}
                 </div>
 
-                <ParallaxThumbnail src={item.image} alt={item.title} />
+                <ParallaxThumbnail src={item.image} alt={item.title} objectPosition={item.objectPosition} />
               </div>
 
               {/* Title Block below image */}
