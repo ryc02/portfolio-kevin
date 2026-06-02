@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const indexData = [
   { id: "01", title: "VITTA STUDIO", image: "/assets/capa-vitta-studio.webp" },
-  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira-nova.png", objectPosition: "right", objectFit: "cover" },
+  { id: "02", title: "BAHIRA", image: "/assets/capa-bahira-nova.png", objectPosition: "center", objectFit: "contain" },
   { id: "03", title: "AMBEV", image: "/assets/capa-ambev.webp" },
   { id: "04", title: "WOODORA", image: "/assets/capa-woodora.webp" },
   { id: "05", title: "L.A.N.S", image: "/assets/capa-lans.webp" }
