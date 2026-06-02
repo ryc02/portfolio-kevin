@@ -20,7 +20,7 @@ export const translations = {
         vista: {
           title: "Vista Concept",
           date: "2024 - Atualmente",
-          subtitle: "Estagiário de Arquitetura",
+          subtitle: "Auxiliar de Projetos",
           desc: "Atuação no desenvolvimento de projetos de varejo de alto padrão. Responsável por projetos executivos, modelagem 3D e renderizações fotorrealistas para marcas globais de prestígio, incluindo: <strong>Swarovski, Burger King, Espaçolaser e BlueFit</strong>. Foco absoluto na padronização da identidade visual e excelência técnica."
         },
         hering: {
@@ -97,7 +97,7 @@ export const translations = {
         vista: {
           title: "Vista Concept",
           date: "2024 - Present",
-          subtitle: "Architecture Intern",
+          subtitle: "Project Assistant",
           desc: "Working in the development of high-end retail projects. Responsible for executive projects, 3D modeling, and photorealistic renderings for prestigious global brands, including: <strong>Swarovski, Burger King, Espaçolaser, and BlueFit</strong>. Absolute focus on visual identity standardization and technical excellence."
         },
         hering: {

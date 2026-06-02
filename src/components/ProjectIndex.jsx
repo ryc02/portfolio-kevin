@@ -23,7 +23,7 @@ const ParallaxThumbnail = ({ src, alt }) => {
   return (
     <div ref={ref} style={{
       width: '100%',
-      height: '400px',
+      height: '550px',
       overflow: 'hidden',
       position: 'relative'
     }}>
