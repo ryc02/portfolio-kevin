@@ -33,7 +33,8 @@ const Hero = () => {
         right: 0,
         bottom: '-10%',
         y,
-        zIndex: 0
+        zIndex: 0,
+        willChange: 'transform'
       }}>
         <img 
           src="/assets/image27.webp" 

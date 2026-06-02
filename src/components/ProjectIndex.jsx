@@ -41,7 +41,8 @@ const ParallaxThumbnail = ({ src, alt, objectPosition = 'center', objectFit = 'c
           position: 'absolute',
           top: '-15%',
           scale: scale,
-          transformOrigin: transformOrigin
+          transformOrigin: transformOrigin,
+          willChange: 'transform'
         }}
       />
     </div>
